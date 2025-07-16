@@ -24,28 +24,19 @@ RSpec.describe Billing do
     it "raises NotImplementedError for FreePlan" do
       plan = Billing::FreePlan.new
       service = Billing::BillingService.new(plan)
-      expect do
-        service.calculate_cost
-      end.to raise_error(Billing::Error,
-                         "Cost calculation failed: This method should be overridden in subclasses")
+      expect(service.calculate_cost).to eq(0)
     end
-
+    
     it "raises NotImplementedError for SubscriptionPlan" do
       plan = Billing::SubscriptionPlan.new
       service = Billing::BillingService.new(plan)
-      expect do
-        service.calculate_cost
-      end.to raise_error(Billing::Error,
-                         "Cost calculation failed: This method should be overridden in subclasses")
+      expect(service.calculate_cost).to eq(9.99)
     end
-
+    
     it "raises NotImplementedError for PayPerUsePlan" do
       plan = Billing::PayPerUsePlan.new
       service = Billing::BillingService.new(plan)
-      expect do
-        service.calculate_cost
-      end.to raise_error(Billing::Error,
-                         "Cost calculation failed: This method should be overridden in subclasses")
+      expect(service.calculate_cost).to eq(10.0)
     end
   end
 end
