@@ -9,26 +9,26 @@ The class diagram below shows the classes in this project. `Billing::BasePlan` i
 
 ```mermaid
 classDiagram
-    class Billing::BasePlan {
+    class BasePlan {
       +calculate_cost()
     }
-    class Billing::FreePlan {
+    class FreePlan {
       +calculate_cost()
     }
-    class Billing::SubscriptionPlan {
+    class SubscriptionPlan {
       +calculate_cost()
     }
-    class Billing::PayPerUsePlan {
+    class PayPerUsePlan {
       +calculate_cost()
     }
-    class Billing::BillingService {
+    class BillingService {
       -plan
       +initialize(plan)
       +calculate_cost()
     }
 
-    Billing::BasePlan <|-- Billing::FreePlan
-    Billing::BasePlan <|-- Billing::SubscriptionPlan
-    Billing::BasePlan <|-- Billing::PayPerUsePlan
-    Billing::BillingService o-- Billing::BasePlan
+    BasePlan <|-- FreePlan
+    BasePlan <|-- SubscriptionPlan
+    BasePlan <|-- PayPerUsePlan
+    BillingService o-- BasePlan
 ```
